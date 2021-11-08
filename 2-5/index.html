@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        th, td {
+            padding : 10px;
+        }
+
+    </style>
+</head>
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous">
+</script>
+
+<body>
+    <select onchange="changeLang()" id ="selectLang">
+        <option id="select" >選択してください</option>
+        <option id="selected_jpn">日本語</option>
+        <option id="selected_en">English</option>
+        <option id="selected_all">全て表示</option>
+    </select>
+    <table>
+        <tr id = "japanese">
+            <th>日本</th>
+            <td>こんにちは</td>
+            <td>ありがとう</td>
+            <td>さようなら</td>
+        </tr>
+        <tr id = "english">
+            <th>English</th>
+            <td>Hello</td>
+            <td>Thank you</td>
+            <td>Good Bye</td>
+        </tr>
+    </table>
+
+    <script>
+        //①onchangeで使用されている関数の中身を実装してください。
+        function changeLang(){
+            
+            let selection = document.getElementById('selectLang');  //セレクトボックス要素の取得
+            let selectionNum = selection.selectedIndex;             //セレクトボックス要素のうちどれが選択されているか取得
+            let judgeID = selection[selectionNum].id;               //選択されているセレクトボックス要素のidをjudgeIDに格納
+
+            let japanese = document.getElementById('japanese'); 
+            let englsih = document.getElementById('english');
+
+            if(judgeID == "selected_jpn"){
+                english.style.display = "none"
+                japanese.style.display = "block"
+
+            }else if (judgeID == "selected_en"){
+                english.style.display = "block"
+                japanese.style.display = "none"
+
+
+            }else {
+                english.style.display = "block"
+                japanese.style.display = "block"
+
+            }
+            // console.log(judgeID);
+
+        }
+    </script>
+</body>
+</html>
